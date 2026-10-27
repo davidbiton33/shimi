@@ -1,0 +1,33 @@
+name: Bug report
+about: Report a reproducible SHIMI defect
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: 'Please redact secrets, usernames, private source code and .ai/ handoff exports before submitting.'
+  - type: input
+    id: version
+    attributes:
+      label: SHIMI version
+      placeholder: '1.6.0-beta.1'
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: OS, Node version and agent client
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+      description: 'Minimal, redacted steps to reproduce the issue'
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs actual behavior
+    validations:
+      required: true

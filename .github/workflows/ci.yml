@@ -1,0 +1,56 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run test:wasm
+      - run: npm run qa:multilang
+      - run: npm run qa:frameworks
+      - run: npm pack --silent
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - shell: pwsh
+        run: |
+          $tgz = (npm pack --silent | Select-Object -Last 1).Trim()
+          if ($LASTEXITCODE -ne 0) { throw 'pack failed' }
+          ./qa/windows-smoke.ps1 -PackagePath (Join-Path (Get-Location) $tgz)
+  macos:
+    runs-on: macos-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - shell: bash
+        run: |
+          tgz=$(npm pack --silent)
+          bash qa/unix-smoke.sh "$tgz"

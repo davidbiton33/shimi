@@ -1,0 +1,23 @@
+name: Feature request
+about: Propose a useful SHIMI improvement
+labels: ['enhancement']
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What user problem does this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: existing
+    attributes:
+      label: What existing tools or workarounds have you tried?
+      description: 'We check existing solutions before building more functionality.'
+    validations:
+      required: true
+  - type: textarea
+    id: approach
+    attributes:
+      label: Desired workflow
+    validations:
+      required: true

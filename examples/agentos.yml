@@ -1,0 +1,19 @@
+# Example: tuned for a large TypeScript monorepo
+version: 1
+watcher:
+  intervalSeconds: 15
+  checkpointSeconds: 180
+  packDebounceSeconds: 30
+  autoStart: true
+checkpoints:
+  keep: 50
+packer:
+  enabled: true
+  include: ["packages/core/**/*", "apps/web/**/*"]
+  ignore: ["**/*.snap", "**/fixtures/large/**"]
+  maxFiles: 300
+  maxFileBytes: 131072
+  maxTotalBytes: 3145728
+  maxOutputBytes: 2097152
+editorOrder: ["cursor", "claude", "windsurf", "cline", "roo", "kiro", "trae"]
+customIgnore: ["data/private/**"]

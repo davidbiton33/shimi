@@ -1,0 +1,68 @@
+{
+  "name": "shimi-agent-cli",
+  "version": "1.6.0-beta.1",
+  "description": "SHIMI — switch AI coding agents without losing project context, continuity or evidence",
+  "type": "module",
+  "bin": {
+    "shimi": "./dist/src/cli.js",
+    "agentos": "./dist/src/cli.js"
+  },
+  "files": [
+    "dist/src",
+    "dist/vendor",
+    "README.md",
+    "LICENSE",
+    "docs/SCIP.md",
+    "docs/CONTINUITY_V12.md",
+    "docs/ONBOARDING_V13.md",
+    "docs/EVIDENCE_V14.md",
+    "docs/ORCHESTRATOR_V15.md",
+    "docs/THIRD_PARTY_NOTICES.md",
+    "docs/GRAMMAR_PROVENANCE.json",
+    "CHANGELOG.md",
+    "docs/SHIMI_MIGRATION.md",
+    "docs/RELEASE_CHECKLIST.md",
+    "docs/DEMO_SCRIPT.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/clean-dist.mjs && tsc -p tsconfig.json && node scripts/copy-vendor.mjs",
+    "vendor:wasm": "node scripts/vendor-tree-sitter.mjs ./node_modules/web-tree-sitter ./node_modules/tree-sitter-wasms/out",
+    "bootstrap:wasm": "node scripts/bootstrap-wasm.mjs",
+    "test:wasm": "npm run build && node scripts/run-wasm-test.mjs",
+    "test": "npm run build && node --test --test-concurrency=1 dist/tests/*.test.js",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "qa:multilang": "npm run build && node qa/multilang-acceptance.mjs",
+    "qa:frameworks": "npm run build && node qa/framework-acceptance.mjs",
+    "qa:release": "node qa/release-gate.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  },
+  "license": "MIT",
+  "keywords": [
+    "shimi",
+    "coding-agent",
+    "agent-handoff",
+    "claude-code",
+    "codex",
+    "cursor",
+    "context",
+    "mcp",
+    "agent-memory",
+    "continuity",
+    "cli",
+    "evidence"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidbiton33/shimi.git"
+  },
+  "homepage": "https://shimi-dev.surge.sh",
+  "bugs": {
+    "url": "https://github.com/davidbiton33/shimi/issues"
+  }
+}

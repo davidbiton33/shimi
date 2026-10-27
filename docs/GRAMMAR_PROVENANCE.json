@@ -1,0 +1,140 @@
+{
+  "source_package": "tree-sitter-wasms@0.1.13",
+  "verified_on": "2026-10-23",
+  "validation": "Exact SHA256 equality of all 11 grammar binaries with npm archive",
+  "exact_upstream_commits_verified": false,
+  "items": [
+    {
+      "language": "c",
+      "binary": "tree-sitter-c.wasm",
+      "sha256": "056b25072382f72deee2c64ec238ffc4bb8cf42844ef21502c0e70f03a8a0d66",
+      "bytes": 792959,
+      "package": "tree-sitter-wasms@0.1.13",
+      "upstream": "tree-sitter/tree-sitter-c",
+      "license": "MIT",
+      "license_url": "https://github.com/tree-sitter/tree-sitter-c/blob/master/LICENSE",
+      "upstream_commit_verified": false,
+      "source_archive_hash_match": true
+    },
+    {
+      "language": "c_sharp",
+      "binary": "tree-sitter-c_sharp.wasm",
+      "sha256": "6266a7e32d68a3459104d994dc848df15d5672b0ea8e86d327274b694f8e6991",
+      "bytes": 3978594,
+      "package": "tree-sitter-wasms@0.1.13",
+      "upstream": "tree-sitter/tree-sitter-c-sharp",
+      "license": "MIT",
+      "license_url": "https://github.com/tree-sitter/tree-sitter-c-sharp/blob/master/LICENSE",
+      "upstream_commit_verified": false,
+      "source_archive_hash_match": true
+    },
+    {
+      "language": "cpp",
+      "binary": "tree-sitter-cpp.wasm",
+      "sha256": "f6afdf53bfd6de76557bb7edb624a3a3869e14d9a83b78433f93617ecee42527",
+      "bytes": 4662978,
+      "package": "tree-sitter-wasms@0.1.13",
+      "upstream": "tree-sitter/tree-sitter-cpp",
+      "license": "MIT",
+      "license_url": "https://github.com/tree-sitter/tree-sitter-cpp/blob/master/LICENSE",
+      "upstream_commit_verified": false,
+      "source_archive_hash_match": true
+    },
+    {
+      "language": "dart",
+      "binary": "tree-sitter-dart.wasm",
+      "sha256": "7f5364e4256cf7e55efd01dd52421ef2663caa8061b82659b7e4bf61064545ec",
+      "bytes": 984666,
+      "package": "tree-sitter-wasms@0.1.13",
+      "upstream": "UserNobody14/tree-sitter-dart",
+      "license": "MIT",
+      "license_url": "https://github.com/UserNobody14/tree-sitter-dart/blob/master/LICENSE",
+      "upstream_commit_verified": false,
+      "source_archive_hash_match": true
+    },
+    {
+      "language": "go",
+      "binary": "tree-sitter-go.wasm",
+      "sha256": "9963ca89b616eaf04b08a43bc1fb0f07b85395bec313330851f1f1ead2f755b6",
+      "bytes": 235957,
+      "package": "tree-sitter-wasms@0.1.13",
+      "upstream": "tree-sitter/tree-sitter-go",
+      "license": "MIT",
+      "license_url": "https://github.com/tree-sitter/tree-sitter-go/blob/master/LICENSE",
+      "upstream_commit_verified": false,
+      "source_archive_hash_match": true
+    },
+    {
+      "language": "java",
+      "binary": "tree-sitter-java.wasm",
+      "sha256": "637aac4415fb39a211a4f4292d63c66b5ce9c32fa2cd35464af4f681d91b9a1f",
+      "bytes": 430239,
+      "package": "tree-sitter-wasms@0.1.13",
+      "upstream": "tree-sitter/tree-sitter-java",
+      "license": "MIT",
+      "license_url": "https://github.com/tree-sitter/tree-sitter-java/blob/master/LICENSE",
+      "upstream_commit_verified": false,
+      "source_archive_hash_match": true
+    },
+    {
+      "language": "kotlin",
+      "binary": "tree-sitter-kotlin.wasm",
+      "sha256": "b5cb00c8d06ed0f10f1dbe497205b437809d7e87db1f638721a8cfb30e044449",
+      "bytes": 4052705,
+      "package": "tree-sitter-wasms@0.1.13",
+      "upstream": "fwcd/tree-sitter-kotlin",
+      "license": "MIT",
+      "license_url": "https://github.com/fwcd/tree-sitter-kotlin/blob/main/LICENSE",
+      "upstream_commit_verified": false,
+      "source_archive_hash_match": true
+    },
+    {
+      "language": "php",
+      "binary": "tree-sitter-php.wasm",
+      "sha256": "55bb617b6f01e14bab997861f0b20a2420cf6ba3199ffeb295b9ec398966d8a3",
+      "bytes": 812594,
+      "package": "tree-sitter-wasms@0.1.13",
+      "upstream": "tree-sitter/tree-sitter-php",
+      "license": "MIT",
+      "license_url": "https://github.com/tree-sitter/tree-sitter-php/blob/master/LICENSE",
+      "upstream_commit_verified": false,
+      "source_archive_hash_match": true
+    },
+    {
+      "language": "python",
+      "binary": "tree-sitter-python.wasm",
+      "sha256": "9056d0fb0c337810d019fae350e8167786119da98f0f282aceae7ab89ee8253b",
+      "bytes": 476105,
+      "package": "tree-sitter-wasms@0.1.13",
+      "upstream": "tree-sitter/tree-sitter-python",
+      "license": "MIT",
+      "license_url": "https://github.com/tree-sitter/tree-sitter-python/blob/master/LICENSE",
+      "upstream_commit_verified": false,
+      "source_archive_hash_match": true
+    },
+    {
+      "language": "ruby",
+      "binary": "tree-sitter-ruby.wasm",
+      "sha256": "93a5022855314cdb45458c7bb026a24a0ebc3a5ff6439e542e881f14dfa13a39",
+      "bytes": 2106447,
+      "package": "tree-sitter-wasms@0.1.13",
+      "upstream": "tree-sitter/tree-sitter-ruby",
+      "license": "MIT",
+      "license_url": "https://github.com/tree-sitter/tree-sitter-ruby/blob/master/LICENSE",
+      "upstream_commit_verified": false,
+      "source_archive_hash_match": true
+    },
+    {
+      "language": "rust",
+      "binary": "tree-sitter-rust.wasm",
+      "sha256": "4409921a70d0aa5bec7d1d7ce809a557a8ee1cf6ace901e3ac6a76e62cfea903",
+      "bytes": 818756,
+      "package": "tree-sitter-wasms@0.1.13",
+      "upstream": "tree-sitter/tree-sitter-rust",
+      "license": "MIT",
+      "license_url": "https://github.com/tree-sitter/tree-sitter-rust/blob/master/LICENSE",
+      "upstream_commit_verified": false,
+      "source_archive_hash_match": true
+    }
+  ]
+}
