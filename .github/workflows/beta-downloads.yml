@@ -1,0 +1,63 @@
+name: Build and attach SHIMI beta downloads
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing GitHub pre-release tag (for example v1.6.0-beta.1)
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  attach-assets:
+    if: github.event_name == 'workflow_dispatch' || github.event.release.prerelease
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'release' && github.event.release.tag_name || inputs.tag }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install and compile
+        run: |
+          npm ci
+          npm run typecheck
+          npm run build
+      - name: Build installers and source archives
+        shell: bash
+        env:
+          TAG: ${{ github.event_name == 'release' && github.event.release.tag_name || inputs.tag }}
+        run: |
+          set -euo pipefail
+          VERSION="$(node -p 'require("./package.json").version')"
+          test "$TAG" = "v$VERSION"
+          mkdir -p release-assets beta-kit
+          PACKAGE="$(npm pack --silent --pack-destination release-assets | tail -n 1)"
+          mv "release-assets/$PACKAGE" "release-assets/SHIMI-$TAG-cli.tgz"
+          tar -tzf "release-assets/SHIMI-$TAG-cli.tgz" | grep -q '^package/dist/src/cli.js$'
+          git archive --format=zip --prefix=shimi/ HEAD -o "release-assets/SHIMI-$TAG-source.zip"
+          cp "release-assets/SHIMI-$TAG-cli.tgz" beta-kit/
+          cp "release-assets/SHIMI-$TAG-source.zip" beta-kit/
+          cp README.md beta-kit/README.md
+          cp docs/SHIMI_MIGRATION.md beta-kit/
+          cp docs/THIRD_PARTY_NOTICES.md beta-kit/
+          (cd beta-kit && zip -qr "../release-assets/SHIMI-$TAG-Complete-Beta-Kit.zip" .)
+          (cd release-assets && sha256sum *.tgz *.zip > SHA256SUMS.txt)
+      - name: Upload assets to GitHub pre-release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.event_name == 'release' && github.event.release.tag_name || inputs.tag }}
+        run: |
+          set -euo pipefail
+          gh release view "$TAG" --json isPrerelease -q '.isPrerelease' | grep -qx true
+          gh release upload "$TAG" release-assets/* --clobber
