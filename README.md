@@ -1,6 +1,6 @@
 # SHIMI 🎤
 
-[Website](https://shimi-dev.surge.sh) · [Docs](docs/README.md) · [Issues](https://github.com/davidbiton33/shimi/issues)
+[Website](https://shimi-dev.surge.sh) · [Download v1.6.0-beta.1](https://github.com/davidbiton33/shimi/releases/tag/v1.6.0-beta.1) · [Docs](docs/README.md) · [Issues](https://github.com/davidbiton33/shimi/issues)
 
 **Switch agents. Keep your progress.**
 
@@ -10,7 +10,7 @@ Your coding agent ran out of tokens halfway through a task? SHIMI helps the next
 
 **Local-first · Open source · Model-independent · Node.js 20+ · No API keys**
 
-> **Public beta candidate — `1.6.0-beta.1`.** Linux has automated QA. The exact release package still needs a native Windows/macOS acceptance test and a real two-vendor AI-agent pilot. See [known limitations](#important-limitations).
+> **Public pre-release — `1.6.0-beta.1`.** GitHub CI and packaged smoke tests passed on Ubuntu, Windows and macOS. A real two-vendor AI-agent handoff pilot and exact provenance verification for some bundled WASM binaries are still outstanding. See [known limitations](#important-limitations).
 
 ## The entire pitch
 
@@ -34,7 +34,7 @@ The previous agent does **not** need to respond to `switch`. SHIMI does not copy
 
 ## Install a beta artifact
 
-Prerequisites: Git, Node.js 20+, and a trusted project repository. Download the `.tgz` attached to this project's GitHub release (once published):
+Prerequisites: Git, Node.js 20+, and a trusted project repository. Download the `.tgz` from the [SHIMI v1.6.0-beta.1 release](https://github.com/davidbiton33/shimi/releases/tag/v1.6.0-beta.1):
 
 ```bash
 npm install -g --offline --ignore-scripts ./SHIMI-v1.6.0-beta.1-cli.tgz
@@ -81,7 +81,7 @@ Advanced, opt-in: `shimi context`, `pack`, `memory`, `subtask`, `evidence`, `gua
 - **Same worktree required:** local `.ai/` files and uncommitted source must still be available to the next agent. Checkpoints contain metadata, **not backups**.
 - **Test execution is opt-in.** `evidence run` executes commands from a project-local manifest: review it first. Handoff and resume do not run repository code automatically.
 - **Static analysis isn't a runtime correctness oracle.** Dependency warnings and conflict heuristics can miss dynamic behavior.
-- **Beta OS support:** Linux tested; the exact beta tarball requires native Windows/macOS validation and actual Claude/Codex/Cursor interoperability tests.
+- **Beta OS support:** packaged CLI smoke tests passed on Ubuntu, Windows and macOS via GitHub Actions; live Claude/Codex/Cursor interoperability tests still need real-world validation.
 - **Security & licensing:** best-effort secret redaction is not a guarantee. Bundled Tree-sitter WASM binaries have checksums matched to a source package, but per-grammar upstream commit provenance is not fully resolved. Review [third-party notices](docs/THIRD_PARTY_NOTICES.md) and [provenance](docs/GRAMMAR_PROVENANCE.json).
 - **MCP compatibility note:** SHIMI installs client connection **`shimi`** and exposes 14 historically named **`agentos_*`** tools for compatibility; protocol identifiers may be versioned in a future release. Resources use `shimi://` with legacy `agentos://` readable.
 
